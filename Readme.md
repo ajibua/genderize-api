@@ -34,7 +34,7 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 curl "http://localhost:8000/api/classify?name=<any-demo-name>"
 
 ## Stack
-- **Language:** Python 3.1+
+- **Language:** Python 3.13+
 - **Framework:** FastAPI
 - **HTTP Client:** httpx (async)
 - **Server:** Uvicorn
