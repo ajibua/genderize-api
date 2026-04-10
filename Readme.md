@@ -15,8 +15,7 @@ A FastAPI service that classifies names by gender using the Genderize API.
 ```json
 { "status": "error", "message": "<description>" }
 ```
-### Run Locally
-```bash
+## Run Locally
 #### Clone the repo
 git clone https://github.com/ajibua/genderize-api/
 cd genderize-api-py
@@ -33,7 +32,7 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 
 #### To run test in terminal 
 curl "http://localhost:8000/api/classify?name=<any-demo-name>"
-```
+
 ## Stack
 - **Language:** Python 3.1+
 - **Framework:** FastAPI
