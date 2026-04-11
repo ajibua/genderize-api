@@ -6,23 +6,23 @@ from datetime import datetime, timezone
 
 app = FastAPI()
 
-# CORS configuration to allow requests from any origin, but only for GET method
+# CORS configuration to allow requests from any origin
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_methods=["*"],
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
-    expose_headers=["*"]
 )
 
 GENDERIZE_URL = "https://api.genderize.io/"
 
 
 @app.get("/api/classify")
-async def classify_name(name: str = Query(default=None)):
-
-    # missing name
-    if name is None or name.strip() == "":
+async def classify_name(name: str = Query(...)):
+    
+    # Validate name parameter - must not be empty or whitespace
+    if not name or not name.strip():
         return JSONResponse(
             status_code=400,
             content={"status": "error", "message": "Missing or empty name parameter"},
@@ -30,7 +30,7 @@ async def classify_name(name: str = Query(default=None)):
 
     try:
         async with httpx.AsyncClient(timeout=10.0) as client:
-            response = await client.get(GENDERIZE_URL, params={"name": name})
+            response = await client.get(GENDERIZE_URL, params={"name": name.strip()})
 
         # when unable to get valid response from upstream
         if response.status_code != 200:
