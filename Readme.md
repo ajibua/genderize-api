@@ -1,6 +1,6 @@
 # Genderize Classifier API
 A FastAPI service that classifies names by gender using the Genderize API.
-### Genderize_API = 'https://api.genderize.io/'
+### Genderize_API = `https://api.genderize.io/`
 
 ## Endpoint
 ### `GET /api/classify?name={name}`
@@ -17,7 +17,7 @@ A FastAPI service that classifies names by gender using the Genderize API.
 ```
 ## Run Locally
 #### Clone the repo
-git clone https://github.com/ajibua/genderize-api/
+git clone `https://github.com/ajibua/genderize-api/`
 cd genderize-api-py
 
 #### Creating a virtual environment
@@ -31,7 +31,10 @@ pip install -r requirements.txt
 uvicorn main:app --host 0.0.0.0 --port 8000
 
 #### To run test in terminal 
-curl "http://localhost:8000/api/classify?name=<any-demo-name>"
+curl `"http://localhost:8000/api/classify?name=<any-demo-name>"`
+
+### Vercel deployed link
+`https://genderize-api-xi.vercel.app/api/classify?name=<any-demo-name>`
 
 ## Stack
 - **Language:** Python 3.13+
